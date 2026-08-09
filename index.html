@@ -189,6 +189,10 @@ ul.plate-cols li + li{ border-top:1px solid oklch(0.975 0.008 85 / 15%); }
   ul.plate-cols li + li{ border-top:none; border-left:1px solid oklch(0.975 0.008 85 / 15%); }
 }
 ul.plate-cols li div:last-child{ margin-top:0.75rem; font-size:0.875rem; line-height:1.65; color:oklch(0.975 0.008 85 / 70%); }
+a.demo-link{ display:inline-block; margin-top:1.5rem; color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:0.2rem; transition:opacity .2s; }
+a.demo-link:hover{ opacity:0.8; }
+.plate-foot{ border-top:1px solid oklch(0.975 0.008 85 / 15%); padding:1.25rem 1.75rem; font-size:0.875rem; line-height:1.65; color:oklch(0.975 0.008 85 / 55%); }
+@media(min-width:640px){ .plate-foot{ padding-left:2.5rem; padding-right:2.5rem; } }
 
 /* --- record --- */
 #record h2{ margin-top:3rem; max-width:18ch; font-size:clamp(1.9rem, 3.6vw, 3rem); line-height:1.06; }
@@ -399,25 +403,28 @@ footer.site .label-caps{ color:oklch(0.975 0.008 85 / 45%); }
         <h2 data-reveal>Governed AI, <span class="text-accent" style="font-style:italic">demonstrated</span> — not asserted.</h2>
         <p class="gai-p" data-reveal data-delay="90">
           An independent portfolio of clean-room, vendor-neutral capability demonstrations.
-          Six patterns designed, three shipping as runnable, tested engines — aligned to
+          Six patterns designed, five public repositories, and a live demo — aligned to
           NIST AI RMF and ISO 42001.
         </p>
       </div>
 
       <div class="plate" data-reveal data-delay="120">
         <div class="plate-head">
-          <span class="label-caps text-accent">Governed Playbook Assistant</span>
-          <span class="label-caps" style="color:oklch(0.975 0.008 85 / 45%)">Python · RAG · Offline test suite passing</span>
+          <span class="label-caps text-accent">Governance Control Tower</span>
+          <span class="label-caps" style="color:oklch(0.975 0.008 85 / 45%)">Live demo · No install, no signup</span>
         </div>
         <div class="plate-body">
-          <p>It answers only from retrieved evidence, cites its sections, and refuses
-          questions its sources cannot support.</p>
+          <p>Ask a question and watch it get grounded or refused, watch a seven-control
+          gate return PASS / REVIEW / BLOCK, then read the audit trail it left behind.</p>
+          <a class="demo-link label-caps" href="https://framework-optimization-lab.github.io/governance-control-tower/" target="_blank" rel="noreferrer">Open the demo&nbsp;&rarr;</a>
         </div>
         <ul class="plate-cols">
-          <li><div class="label-caps text-accent">Grounded</div><div>Answers only from retrieved evidence</div></li>
-          <li><div class="label-caps text-accent">Citable</div><div>Every claim traced to its section</div></li>
-          <li><div class="label-caps text-accent">Refusing</div><div>Declines what sources can't support</div></li>
+          <li><div class="label-caps text-accent">Grounded &amp; refusing</div><div>Answers only from retrieved evidence — or a logged refusal</div></li>
+          <li><div class="label-caps text-accent">Policy as code</div><div>Seven deterministic controls: PASS, REVIEW, or BLOCK</div></li>
+          <li><div class="label-caps text-accent">Accountable</div><div>Named human sign-off and an append-only audit trail</div></li>
         </ul>
+        <div class="plate-foot">Built on the Governed Playbook Assistant (Python · RAG · offline test suite passing)
+        and the AI Decision Governance Gate — five public repositories at github.com/framework-optimization-lab.</div>
       </div>
     </div>
   </section>
