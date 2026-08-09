@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tania Mason — Payer Delivery Governance &amp; Governed AI</title>
+<meta name="description" content="25+ years in healthcare payer operations and technology. Operating models, delivery standards, governance gates, and evidence-grounded AI aligned to NIST AI RMF and ISO 42001.">
+<meta property="og:title" content="Tania Mason — Payer Delivery Governance &amp; Governed AI">
+<meta property="og:description" content="Operating models, delivery standards, and governed AI for healthcare payers. 25+ years in payer operations, 23 in the Cognizant/TriZetto ecosystem.">
+<meta property="og:type" content="profile">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo-badge.png">
+<link rel="stylesheet" href="fonts.css">
+<style>
+/* ================================================================
+   Tania Mason — personal site, self-contained edition.
+   Hand-written port of the Lovable build (repo: tania-mason-payertech).
+   Same design system: warm archival paper against navy ink, brass
+   accents, Libre Baskerville display over IBM Plex text faces.
+   No frameworks, no external requests — fonts and logo ship locally.
+   ================================================================ */
+
+:root{
+  --background: oklch(0.973 0.008 85);
+  --foreground: oklch(0.24 0.038 258);
+  --primary: oklch(0.29 0.062 258);
+  --primary-foreground: oklch(0.975 0.008 85);
+  --secondary: oklch(0.93 0.012 85);
+  --muted-foreground: oklch(0.505 0.028 258);
+  --accent: oklch(0.615 0.105 68);
+  --border: oklch(0.875 0.014 82);
+  --font-display: "Libre Baskerville", Georgia, serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+*{ box-sizing:border-box; border-color:var(--border); }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--background); color:var(--foreground);
+  font-family:var(--font-sans); -webkit-font-smoothing:antialiased; line-height:1.5;
+}
+h1,h2,h3{ font-family:var(--font-display); font-weight:700; letter-spacing:-0.015em; margin:0; }
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; }
+section[id]{ scroll-margin-top:4rem; }
+.wrap{ max-width:72rem; margin:0 auto; padding-left:1.5rem; padding-right:1.5rem; }
+@media(min-width:640px){ .wrap{ padding-left:2.5rem; padding-right:2.5rem; } }
+
+.label-caps{
+  font-family:var(--font-mono); font-size:0.6875rem; font-weight:500;
+  letter-spacing:0.16em; text-transform:uppercase;
+}
+.tnum{ font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1; }
+.text-accent{ color:var(--accent); }
+.text-muted{ color:var(--muted-foreground); }
+
+/* --- textures --- */
+.engrave-grid{ position:absolute; inset:0; pointer-events:none; opacity:0.045;
+  background-image:linear-gradient(to right, currentColor 1px, transparent 1px),
+                   linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size:5.5rem 5.5rem; }
+.engrave-rules{ position:absolute; inset:0; pointer-events:none; opacity:0.06;
+  background-image:linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size:100% 2.25rem; }
+.paper-grain{ position:absolute; inset:0; pointer-events:none; opacity:0.028;
+  background-image:radial-gradient(oklch(0.24 0.038 258) 0.5px, transparent 0.5px);
+  background-size:3px 3px; }
+
+/* --- reveal animations --- */
+@keyframes rise-in{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none;} }
+@keyframes draw-rule{ from{ transform:scaleX(0);} to{ transform:scaleX(1);} }
+[data-reveal]{ opacity:0; }
+[data-reveal][data-shown="true"]{ animation:rise-in 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+[data-draw]{ transform:scaleX(0); transform-origin:left; }
+[data-draw][data-shown="true"]{ animation:draw-rule 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+@media(prefers-reduced-motion:reduce){
+  [data-reveal],[data-draw]{ opacity:1; transform:none; animation:none; }
+}
+
+/* --- masthead --- */
+header.masthead{
+  position:sticky; top:0; z-index:40; backdrop-filter:blur(12px);
+  background:oklch(0.973 0.008 85 / 85%);
+  border-bottom:1px solid oklch(0.29 0.062 258 / 15%);
+}
+.masthead-inner{ display:flex; align-items:center; justify-content:space-between; padding-top:0.875rem; padding-bottom:0.875rem; }
+.brand{ display:flex; align-items:baseline; gap:0.75rem; }
+.brand img{ height:1.75rem; width:1.75rem; border-radius:6px; align-self:center; }
+.brand .name{ font-family:var(--font-display); font-weight:700; font-size:1rem; letter-spacing:-0.015em; }
+.brand .brand-sub{ display:none; color:var(--muted-foreground); }
+@media(min-width:640px){ .brand .brand-sub{ display:inline; } }
+nav.pages{ display:none; gap:2rem; }
+@media(min-width:768px){ nav.pages{ display:flex; } }
+nav.pages a{ display:flex; align-items:baseline; gap:0.5rem; color:var(--muted-foreground); transition:color .2s; }
+nav.pages a:hover{ color:var(--primary); }
+
+/* --- hero --- */
+.hero{ position:relative; overflow:hidden; background:var(--primary); color:var(--primary-foreground); }
+.hero-inner{ position:relative; padding-top:6rem; padding-bottom:5rem; }
+@media(min-width:640px){ .hero-inner{ padding-top:8rem; padding-bottom:6rem; } }
+.hero-grid{ display:grid; gap:4rem; }
+@media(min-width:1024px){ .hero-grid{ grid-template-columns:1fr 20rem; } }
+.kicker{ display:flex; align-items:center; gap:1rem; }
+.kicker .bar{ height:1px; width:2.5rem; background:var(--accent); }
+h1.display{
+  margin-top:2rem; max-width:15ch;
+  font-size:clamp(2.75rem, 7vw, 5.25rem); line-height:0.94;
+}
+.hero-rule{ margin-top:2.5rem; height:1px; width:100%; max-width:36rem; background:oklch(0.975 0.008 85 / 25%); }
+.hero-p{ margin:2rem 0 0; max-width:36rem; font-size:1.125rem; line-height:1.75; color:oklch(0.975 0.008 85 / 75%); }
+dl.ledger{ margin:0; align-self:end; }
+@media(min-width:1024px){ dl.ledger{ border-left:1px solid oklch(0.975 0.008 85 / 15%); padding-left:2.5rem; } }
+.ledger-row{
+  display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem;
+  border-bottom:1px solid oklch(0.975 0.008 85 / 12%); padding:1rem 0;
+}
+.ledger-row:first-child{ border-top:1px solid oklch(0.975 0.008 85 / 12%); }
+@media(min-width:1024px){ .ledger-row:first-child{ border-top:none; padding-top:0; } }
+.ledger-row dd{ margin:0; font-family:var(--font-display); font-weight:700; font-size:1.875rem; color:var(--accent); }
+.ledger-row dt{ color:oklch(0.975 0.008 85 / 55%); text-align:right; }
+
+/* --- section shells --- */
+.section{ position:relative; overflow:hidden; }
+.section-inner{ position:relative; padding-top:6rem; padding-bottom:6rem; }
+@media(min-width:640px){ .section-inner{ padding-top:7rem; padding-bottom:7rem; } }
+.section-mark{ display:flex; align-items:center; gap:1rem; }
+.section-mark .bar{ height:1px; width:2rem; background:var(--accent); }
+.navy{ background:var(--primary); color:var(--primary-foreground); }
+
+/* --- practice --- */
+.practice-grid{ margin-top:3rem; display:grid; gap:3.5rem; }
+@media(min-width:1024px){ .practice-grid{ grid-template-columns:1.05fr 1.25fr; } }
+.practice-grid h2{ font-size:clamp(1.9rem, 3.6vw, 3rem); line-height:1.06; text-wrap:balance; }
+.h2-rule{ margin-top:2rem; height:2px; width:6rem; background:var(--accent); }
+.practice-copy{ font-size:1.0625rem; line-height:1.75; color:var(--muted-foreground); }
+.practice-copy p{ margin:0 0 1.5rem; }
+.practice-copy p:last-child{ margin-bottom:0; }
+.practice-copy p.lede::first-letter{
+  float:left; margin:0.25rem 0.75rem 0 0; font-family:var(--font-display);
+  font-size:3.25rem; line-height:0.8; font-weight:700; color:var(--primary);
+}
+.cards{
+  margin-top:5rem; display:grid; gap:1px;
+  border:1px solid oklch(0.29 0.062 258 / 15%); background:oklch(0.29 0.062 258 / 15%);
+}
+@media(min-width:640px){ .cards{ grid-template-columns:1fr 1fr; } }
+.card{
+  position:relative; overflow:hidden; background:var(--background);
+  padding:2rem; transition:background-color .5s;
+}
+@media(min-width:640px){ .card{ padding:2.5rem; } }
+.card:hover{ background:var(--secondary); }
+.ghost{
+  position:absolute; right:-0.5rem; bottom:-1.5rem; display:none; pointer-events:none;
+  font-family:var(--font-display); font-weight:700; font-size:8.5rem; line-height:0.72;
+  letter-spacing:-0.04em; color:var(--primary); opacity:0.055; user-select:none;
+}
+@media(min-width:640px){ .ghost{ display:block; } }
+.card h3{ position:relative; margin-top:1.25rem; max-width:22ch; font-size:1.35rem; line-height:1.25; }
+.card .card-rule{ margin-top:1.5rem; display:block; height:1px; width:2.5rem; background:var(--accent); transition:width .5s; }
+.card:hover .card-rule{ width:5rem; }
+.card p{ position:relative; margin:1.25rem 0 0; font-size:0.9375rem; line-height:1.7; color:var(--muted-foreground); }
+
+/* --- governed ai --- */
+.gai-grid{ margin-top:3rem; display:grid; gap:3rem; }
+@media(min-width:1024px){ .gai-grid{ grid-template-columns:1.15fr 1fr; align-items:end; } }
+.gai-grid h2{ max-width:16ch; font-size:clamp(2rem, 4.4vw, 3.5rem); line-height:1.02; }
+.gai-grid .gai-p{ margin:0; font-size:1.0625rem; line-height:1.75; color:oklch(0.975 0.008 85 / 70%); }
+.plate{ margin-top:4rem; border:1px solid oklch(0.975 0.008 85 / 20%); background:oklch(0.975 0.008 85 / 4%); }
+.plate-head{
+  display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:0.75rem;
+  border-bottom:1px solid oklch(0.975 0.008 85 / 15%); padding:1rem 1.75rem;
+}
+.plate-body{ padding:2.5rem 1.75rem; }
+.plate-body p{ margin:0; max-width:42rem; font-family:var(--font-display); font-size:1.35rem; line-height:1.5; }
+ul.plate-cols{ list-style:none; margin:0; padding:0; display:grid; border-top:1px solid oklch(0.975 0.008 85 / 15%); }
+@media(min-width:640px){ ul.plate-cols{ grid-template-columns:1fr 1fr 1fr; } }
+ul.plate-cols li{ padding:1.75rem; }
+ul.plate-cols li + li{ border-top:1px solid oklch(0.975 0.008 85 / 15%); }
+@media(min-width:640px){
+  .plate-head, .plate-body{ padding-left:2.5rem; padding-right:2.5rem; }
+  ul.plate-cols li{ padding-left:2.5rem; padding-right:2.5rem; }
+  ul.plate-cols li + li{ border-top:none; border-left:1px solid oklch(0.975 0.008 85 / 15%); }
+}
+ul.plate-cols li div:last-child{ margin-top:0.75rem; font-size:0.875rem; line-height:1.65; color:oklch(0.975 0.008 85 / 70%); }
+
+/* --- record --- */
+#record h2{ margin-top:3rem; max-width:18ch; font-size:clamp(1.9rem, 3.6vw, 3rem); line-height:1.06; }
+.spine{ margin-top:4rem; }
+.ruler{ position:relative; height:1.5rem; border-top:1px solid oklch(0.29 0.062 258 / 25%); }
+.ruler .tickwrap{ position:absolute; top:0; }
+.ruler .tick{ display:block; height:0.5rem; width:1px; background:oklch(0.29 0.062 258 / 35%); }
+.ruler .yr{ display:block; margin-top:0.375rem; color:var(--muted-foreground); }
+.bars{ margin-top:1.5rem; }
+.bar-row{ position:relative; height:1.75rem; margin-top:0.625rem; }
+.bar-row:first-child{ margin-top:0; }
+.bar-fill{ position:absolute; top:0; bottom:0; display:flex; align-items:center; background:var(--primary); padding:0 0.75rem; }
+.bar-fill span{ color:oklch(0.975 0.008 85 / 90%); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bar-out{ position:absolute; top:0; bottom:0; display:flex; align-items:center; color:var(--muted-foreground); padding-right:0.625rem; }
+.orgs{ margin-top:5rem; }
+.org{ margin-top:5rem; }
+.org:first-child{ margin-top:0; }
+.org-head{
+  display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:0.75rem;
+  border-top:2px solid var(--accent); padding-top:1rem;
+}
+.org-head h3{ font-size:1.6rem; line-height:1.25; }
+.roles{ margin-top:2.5rem; }
+.role{ display:grid; gap:0.75rem; border-left:1px solid oklch(0.29 0.062 258 / 12%); padding-left:1.5rem; margin-top:2.5rem; }
+.role:first-child{ margin-top:0; }
+@media(min-width:768px){
+  .role{ grid-template-columns:12rem 1fr; gap:2.5rem; border-left:none; padding-left:0; }
+  .role .role-span{ padding-top:0.25rem; }
+}
+.role h4{ margin:0; font-family:var(--font-display); font-weight:700; font-size:1.0625rem; line-height:1.4; }
+.role ul{ list-style:none; margin:1rem 0 0; padding:0; }
+.role li{ position:relative; padding-left:1.5rem; margin-top:0.75rem; font-size:0.9375rem; line-height:1.7; color:var(--muted-foreground); }
+.role li:first-child{ margin-top:0; }
+.role li::before{ content:""; position:absolute; top:0.7em; left:0; height:1px; width:0.875rem; background:var(--accent); }
+
+/* --- credentials --- */
+.creds{ border-top:1px solid oklch(0.29 0.062 258 / 15%); border-bottom:1px solid oklch(0.29 0.062 258 / 15%); background:var(--secondary); }
+.creds-grid{ display:grid; gap:1px; background:oklch(0.29 0.062 258 / 15%); }
+@media(min-width:640px){ .creds-grid{ grid-template-columns:1fr 1fr 1fr; } }
+.cred-col{ background:var(--secondary); padding:3.5rem 0; }
+@media(min-width:640px){ .cred-col{ padding:3.5rem 2.5rem; } }
+.cred-col ul{ list-style:none; margin:1.5rem 0 0; padding:0; font-size:0.9375rem; line-height:1.7; }
+.cred-col li{ border-bottom:1px solid oklch(0.29 0.062 258 / 10%); padding-bottom:0.75rem; margin-top:0.75rem; }
+.cred-col li:first-child{ margin-top:0; }
+.cred-col li:last-child{ border-bottom:none; }
+
+/* --- contact --- */
+#contact .section-inner{ padding-top:7rem; padding-bottom:8rem; }
+#contact h2{ margin-top:2.5rem; max-width:18ch; font-size:clamp(2rem, 4.6vw, 3.75rem); line-height:1.02; }
+.contact-grid{ margin-top:3.5rem; display:grid; gap:1px; border-top:1px solid oklch(0.975 0.008 85 / 20%); }
+@media(min-width:640px){ .contact-grid{ grid-template-columns:1fr 1fr; } }
+.contact-grid a{
+  display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem;
+  border-bottom:1px solid oklch(0.975 0.008 85 / 20%); padding:1.75rem 0; transition:background-color .3s;
+}
+.contact-grid a:hover{ background:oklch(0.975 0.008 85 / 5%); }
+@media(min-width:640px){
+  .contact-grid a:first-child{ border-right:1px solid oklch(0.975 0.008 85 / 20%); padding-right:2rem; }
+  .contact-grid a:last-child{ padding-left:2rem; }
+}
+.contact-grid .val{ font-family:var(--font-display); font-size:1.125rem; transition:transform .3s; }
+.contact-grid a:hover .val{ transform:translateX(-0.25rem); }
+
+/* --- footer --- */
+footer.site{ background:var(--primary); color:var(--primary-foreground); }
+.footer-inner{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.75rem;
+  border-top:1px solid oklch(0.975 0.008 85 / 15%); padding-top:1.5rem; padding-bottom:1.5rem;
+}
+footer.site .label-caps{ color:oklch(0.975 0.008 85 / 45%); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="#top" class="brand">
+      <img src="logo-badge.png" alt="Tania Mason monogram" width="512" height="512">
+      <span class="name">Tania Mason</span>
+      <span class="label-caps brand-sub">Payer Delivery Governance</span>
+    </a>
+    <nav class="pages">
+      <a class="label-caps" href="#practice"><span class="tnum text-accent">01</span>Practice</a>
+      <a class="label-caps" href="#governed-ai"><span class="tnum text-accent">02</span>Governed AI</a>
+      <a class="label-caps" href="#record"><span class="tnum text-accent">03</span>Record</a>
+      <a class="label-caps" href="#contact"><span class="tnum text-accent">04</span>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="engrave-grid" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker" data-reveal>
+            <span class="bar"></span>
+            <span class="label-caps text-accent">Henderson, Nevada</span>
+          </div>
+          <h1 class="display" data-reveal data-delay="60">
+            I design how<br>delivery teams<br><span class="text-accent">work.</span>
+          </h1>
+          <div class="hero-rule" data-draw data-delay="200" aria-hidden="true"></div>
+          <p class="hero-p" data-reveal data-delay="140">
+            The playbooks, standards, governance gates, and cadences that make payer
+            delivery repeatable and defensible. Twenty-five years in healthcare payer
+            operations and technology — twenty-three of them in the Cognizant/TriZetto
+            ecosystem.
+          </p>
+        </div>
+        <dl class="ledger">
+          <div class="ledger-row" data-reveal data-delay="220"><dd class="tnum">25+</dd><dt class="label-caps">Years in payer ops</dt></div>
+          <div class="ledger-row" data-reveal data-delay="290"><dd class="tnum">23</dd><dt class="label-caps">Years TriZetto / Facets</dt></div>
+          <div class="ledger-row" data-reveal data-delay="360"><dd class="tnum">06</dd><dt class="label-caps">Capability patterns</dt></div>
+          <div class="ledger-row" data-reveal data-delay="430"><dd class="tnum">AIGP</dd><dt class="label-caps">IAPP — Oct 2026</dt></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practice -->
+  <section id="practice" class="section">
+    <div class="paper-grain" aria-hidden="true"></div>
+    <div class="wrap section-inner">
+      <div class="section-mark" data-reveal>
+        <span class="label-caps tnum text-accent">01</span>
+        <span class="bar"></span>
+        <span class="label-caps text-muted">The practice</span>
+      </div>
+
+      <div class="practice-grid">
+        <div>
+          <h2 data-reveal>Both sides of the payer/vendor table.</h2>
+          <div class="h2-rule" data-draw data-delay="120" aria-hidden="true"></div>
+        </div>
+        <div class="practice-copy" data-reveal data-delay="90">
+          <p class="lede">
+            Most recently, as an Associate Director in solution architecture, I held three
+            jobs at once: program lead for a large-scale payer program directing end-to-end
+            core-solution pre-configuration with no dedicated PM, pre-sales solution
+            architect on multi-million-dollar pursuits, and AI/automation adoption lead for
+            the team.
+          </p>
+          <p>
+            Underneath the leadership roles is deep, hands-on Facets history. And before
+            TriZetto, a decade at a health plan from the claims floor up — so the operating
+            models I write are shaped by having done the work they govern.
+          </p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card" data-reveal>
+          <span class="ghost tnum" aria-hidden="true">01</span>
+          <span class="label-caps tnum text-accent">01</span>
+          <h3>Operating models &amp; delivery blueprints</h3>
+          <span class="card-rule"></span>
+          <p>Strategy, vision, and operating blueprint for multi-LOB pre-configured solutions
+          programs. Scope qualification that separates reusable content from customer-specific
+          work, and a standardized lifecycle from business intent through validation evidence
+          to operate/maintain assumptions.</p>
+        </article>
+        <article class="card" data-reveal data-delay="90">
+          <span class="ghost tnum" aria-hidden="true">02</span>
+          <span class="label-caps tnum text-accent">02</span>
+          <h3>Governance gates &amp; decision rights</h3>
+          <span class="card-rule"></span>
+          <p>Readiness gates with explicit evidence expectations and a RACI that names who
+          decides what. Governance that makes delivery defensible under audit, not just
+          documented after the fact.</p>
+        </article>
+        <article class="card" data-reveal data-delay="180">
+          <span class="ghost tnum" aria-hidden="true">03</span>
+          <span class="label-caps tnum text-accent">03</span>
+          <h3>Cross-domain Facets adjudication</h3>
+          <span class="card-rule"></span>
+          <p>The constant of the consulting years: tracing claim outcomes across
+          eligibility/membership, benefit plans, provider, and claims editing when
+          single-domain analysis stalls.</p>
+        </article>
+        <article class="card" data-reveal data-delay="270">
+          <span class="ghost tnum" aria-hidden="true">04</span>
+          <span class="label-caps tnum text-accent">04</span>
+          <h3>Pre-sales solution architecture</h3>
+          <span class="card-rule"></span>
+          <p>Implementation narrative, timelines, cost estimation, and pricing models on
+          multi-million-dollar pursuits — consolidating every contributing practice area's
+          inputs into approved pricing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Governed AI -->
+  <section id="governed-ai" class="section navy">
+    <div class="engrave-rules" aria-hidden="true"></div>
+    <div class="wrap section-inner">
+      <div class="section-mark" data-reveal>
+        <span class="label-caps tnum text-accent">02</span>
+        <span class="bar"></span>
+        <span class="label-caps" style="color:oklch(0.975 0.008 85 / 60%)">Current work</span>
+      </div>
+
+      <div class="gai-grid">
+        <h2 data-reveal>Governed AI, <span class="text-accent" style="font-style:italic">demonstrated</span> — not asserted.</h2>
+        <p class="gai-p" data-reveal data-delay="90">
+          An independent portfolio of clean-room, vendor-neutral capability demonstrations.
+          Six patterns designed, three shipping as runnable, tested engines — aligned to
+          NIST AI RMF and ISO 42001.
+        </p>
+      </div>
+
+      <div class="plate" data-reveal data-delay="120">
+        <div class="plate-head">
+          <span class="label-caps text-accent">Governed Playbook Assistant</span>
+          <span class="label-caps" style="color:oklch(0.975 0.008 85 / 45%)">Python · RAG · Offline test suite passing</span>
+        </div>
+        <div class="plate-body">
+          <p>It answers only from retrieved evidence, cites its sections, and refuses
+          questions its sources cannot support.</p>
+        </div>
+        <ul class="plate-cols">
+          <li><div class="label-caps text-accent">Grounded</div><div>Answers only from retrieved evidence</div></li>
+          <li><div class="label-caps text-accent">Citable</div><div>Every claim traced to its section</div></li>
+          <li><div class="label-caps text-accent">Refusing</div><div>Declines what sources can't support</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Record -->
+  <section id="record" class="section">
+    <div class="paper-grain" aria-hidden="true"></div>
+    <div class="wrap section-inner">
+      <div class="section-mark" data-reveal>
+        <span class="label-caps tnum text-accent">03</span>
+        <span class="bar"></span>
+        <span class="label-caps text-muted">The record</span>
+      </div>
+
+      <h2 data-reveal>Thirty-five years, one throughline.</h2>
+
+      <!-- Career spine (1990 → 2027; widths computed to match the source) -->
+      <div class="spine" data-reveal data-delay="80">
+        <div class="ruler">
+          <div class="tickwrap" style="left:0%"><span class="tick"></span><span class="label-caps tnum yr">1990</span></div>
+          <div class="tickwrap" style="left:27.027%; transform:translateX(-50%)"><span class="tick" style="margin-left:50%"></span><span class="label-caps tnum yr">2000</span></div>
+          <div class="tickwrap" style="left:54.054%; transform:translateX(-50%)"><span class="tick" style="margin-left:50%"></span><span class="label-caps tnum yr">2010</span></div>
+          <div class="tickwrap" style="left:81.081%; transform:translateX(-50%)"><span class="tick" style="margin-left:50%"></span><span class="label-caps tnum yr">2020</span></div>
+          <div class="tickwrap" style="left:100%; transform:translateX(-100%)"><span class="tick" style="margin-left:100%"></span><span class="label-caps tnum yr">NOW</span></div>
+        </div>
+        <div class="bars">
+          <div class="bar-row">
+            <div class="bar-fill" style="left:0%; width:32.432%"><span class="label-caps">Payer side</span></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-fill" style="left:35.135%; width:62.162%"><span class="label-caps">Vendor side</span></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-out label-caps" style="right:2.703%">Governed AI</span>
+            <div class="bar-fill" style="left:97.297%; width:2.703%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="orgs">
+        <!-- Independent -->
+        <div class="org">
+          <div class="org-head" data-reveal>
+            <h3>Independent</h3>
+            <span class="label-caps tnum text-muted">Jul 2026 — Present</span>
+          </div>
+          <div class="roles">
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">Jul 2026 — Present</div>
+              <div>
+                <h4>Independent Portfolio — Governance Capability Demonstrations</h4>
+                <ul>
+                  <li>Designed six clean-room, vendor-neutral capability patterns — evidence-grounded decision support, standards authoring, a governance model for trustworthy AI, a delivery operating playbook, and a capability maturity model — three shipping as runnable, tested engines.</li>
+                  <li>Developed the Governed Playbook Assistant: a retrieval-augmented generation application in Python with a passing offline test suite.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- TriZetto -->
+        <div class="org">
+          <div class="org-head" data-reveal>
+            <h3>TriZetto Healthcare Products</h3>
+            <span class="label-caps tnum text-muted">22 yrs 10 mos</span>
+          </div>
+          <div class="roles">
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">Sep 2025 — Jun 2026</div>
+              <div>
+                <h4>Associate Director, Strategic Solution Architecture</h4>
+                <ul>
+                  <li>Operated across three concurrent functions — program lead for a large-scale payer program, pre-sales solution architect, and AI/automation adoption catalyst — in a heavily matrixed payer environment.</li>
+                  <li>Defined strategy, vision, and operating blueprint for a standalone, multi-LOB Pre-Configured Solutions program, including readiness gates with explicit decision rights.</li>
+                  <li>Owned implementation narrative, timelines, cost estimation, and pricing on multi-million-dollar pursuits.</li>
+                  <li>Introduced Microsoft Copilot, Copilot Studio agents, and Power Automate into daily operations; packaged the resulting patterns and prompt library for team-wide reuse.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">May 2021 — Aug 2025</div>
+              <div>
+                <h4>Senior Manager, Strategic Solution Architecture</h4>
+                <ul>
+                  <li>Drove project scoping, solution design, and budgetary pricing from simple to complex engagements; partnered with sales account teams through final contracting.</li>
+                  <li>Authored and presented client proposals and RFP responses under pursuit deadlines; identified reuse opportunities that reduced overall price.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">Oct 2018 — Apr 2021</div>
+              <div>
+                <h4>Senior Manager, Consulting Services</h4>
+                <ul>
+                  <li>Established a repeatable onshore/offshore benefit-configuration delivery model producing predictable, accurate benefit packages.</li>
+                  <li>Owned project status, issue/risk management, resource allocation, and forecast-hours analysis as trusted advisor to client and project leadership.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">May 2014 — Oct 2018</div>
+              <div>
+                <h4>Manager, Consulting Services</h4>
+                <ul>
+                  <li>Project-managed Payment Bundling Administration implementations and the PBA subject-matter experts.</li>
+                  <li>Contributed to the TriZetto Advantage Framework implementation methodology; authored the PBA best-practice baseline documentation.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">Jun 2012 — May 2014</div>
+              <div>
+                <h4>Facets Senior Consultant I</h4>
+                <ul>
+                  <li>Guided teams of ~10 consultants and business analysts; led gap analysis across core-solution releases.</li>
+                  <li>Facilitated JAD sessions; led detail design, configuration builds, data mapping, SIT/UAT, and defect/ALM management.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">Mar 2009 — Jun 2012</div>
+              <div>
+                <h4>Facets Consultant II</h4>
+                <ul>
+                  <li>Led Facets configuration builds and gap analysis across core-solution releases.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">Mar 2006 — Mar 2009</div>
+              <div>
+                <h4>Facets Business Analyst</h4>
+                <ul>
+                  <li>Translated business and end-user requirements into Facets configuration and IT specifications.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">Feb 2005 — Mar 2006</div>
+              <div>
+                <h4>Facets Trainer</h4>
+                <ul>
+                  <li>Delivered Facets training curricula to client and internal teams; led desk-level procedure review.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">Sep 2003 — Feb 2005</div>
+              <div>
+                <h4>Facets Consultant I</h4>
+                <ul>
+                  <li>Configured membership/eligibility and benefits on the Facets core administration platform.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Mid America -->
+        <div class="org">
+          <div class="org-head" data-reveal>
+            <h3>Mid America Health · Coventry Health Care</h3>
+            <span class="label-caps tnum text-muted">12 yrs</span>
+          </div>
+          <div class="roles">
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">1998 — 2002</div>
+              <div>
+                <h4>Business Analyst</h4>
+                <ul>
+                  <li>Configuration team member of a Facets implementation with emphasis on membership, plan, and product; technical liaison between Operations and Information Services.</li>
+                  <li>Designed regression test scripts, validated Facets data mapping conventions, and managed third-party pharmacy, vision, and print vendors.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">1995 — 1998</div>
+              <div>
+                <h4>Claims Team Lead</h4>
+                <ul>
+                  <li>Supervised claims analysts against production and accuracy standards; authored policy and procedural memos.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="role" data-reveal>
+              <div class="label-caps tnum text-accent role-span">1990 — 1995</div>
+              <div>
+                <h4>Claims Examiner</h4>
+                <ul>
+                  <li>Adjudication of medical health claims, including coding per hospital and ancillary contracts.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="creds">
+    <div class="wrap" style="padding-left:1.5rem; padding-right:1.5rem;">
+      <div class="creds-grid">
+        <div class="cred-col" data-reveal>
+          <div class="section-mark" style="gap:0.75rem;">
+            <span class="label-caps tnum text-accent">01</span>
+            <span class="label-caps text-muted">Certifications</span>
+          </div>
+          <ul>
+            <li>IAPP AIGP — in progress, Oct 2026</li>
+            <li>Facets Business Medical Associate</li>
+          </ul>
+        </div>
+        <div class="cred-col" data-reveal data-delay="90">
+          <div class="section-mark" style="gap:0.75rem;">
+            <span class="label-caps tnum text-accent">02</span>
+            <span class="label-caps text-muted">Recognition</span>
+          </div>
+          <ul>
+            <li>TriZetto Pinnacle of the Pyramid Award</li>
+            <li>TriZetto Golden Pyramid Award</li>
+            <li>TriZetto PowerStar Award (×2)</li>
+          </ul>
+        </div>
+        <div class="cred-col" data-reveal data-delay="180">
+          <div class="section-mark" style="gap:0.75rem;">
+            <span class="label-caps tnum text-accent">03</span>
+            <span class="label-caps text-muted">Education</span>
+          </div>
+          <ul>
+            <li>Western Illinois University</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section navy">
+    <div class="engrave-grid" aria-hidden="true"></div>
+    <div class="wrap section-inner">
+      <div class="section-mark" data-reveal>
+        <span class="label-caps tnum text-accent">04</span>
+        <span class="bar"></span>
+        <span class="label-caps" style="color:oklch(0.975 0.008 85 / 60%)">Contact</span>
+      </div>
+
+      <h2 data-reveal>Open to conversations about payer delivery governance and
+      <span class="text-accent">trustworthy AI</span> adoption.</h2>
+
+      <div class="contact-grid">
+        <a href="mailto:tmasont@msn.com" data-reveal>
+          <span class="label-caps text-accent">Email</span>
+          <span class="val">tmasont@msn.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/tania-mason-payertech" target="_blank" rel="noreferrer" data-reveal data-delay="90">
+          <span class="label-caps text-accent">LinkedIn</span>
+          <span class="val">/in/tania-mason-payertech</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap footer-inner">
+    <span class="label-caps">Tania Mason · Henderson, NV</span>
+    <span class="label-caps">Healthcare Payer Technology</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var nodes = document.querySelectorAll("[data-reveal],[data-draw]");
+  if (!nodes.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      var delay = el.getAttribute("data-delay");
+      if (delay) el.style.animationDelay = delay + "ms";
+      el.setAttribute("data-shown", "true");
+      io.unobserve(el);
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  nodes.forEach(function (n) { io.observe(n); });
+})();
+</script>
+</body>
+</html>
