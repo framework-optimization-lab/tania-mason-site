@@ -239,15 +239,15 @@ ul.plate-cols li div:last-child{ margin-top:0.75rem; font-size:0.875rem; line-he
 #contact .section-inner{ padding-top:7rem; padding-bottom:8rem; }
 #contact h2{ margin-top:2.5rem; max-width:18ch; font-size:clamp(2rem, 4.6vw, 3.75rem); line-height:1.02; }
 .contact-grid{ margin-top:3.5rem; display:grid; gap:1px; border-top:1px solid oklch(0.975 0.008 85 / 20%); }
-@media(min-width:640px){ .contact-grid{ grid-template-columns:1fr 1fr; } }
+@media(min-width:640px){ .contact-grid{ grid-template-columns:1fr 1fr 1fr; } }
 .contact-grid a{
   display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem;
   border-bottom:1px solid oklch(0.975 0.008 85 / 20%); padding:1.75rem 0; transition:background-color .3s;
 }
 .contact-grid a:hover{ background:oklch(0.975 0.008 85 / 5%); }
 @media(min-width:640px){
-  .contact-grid a:first-child{ border-right:1px solid oklch(0.975 0.008 85 / 20%); padding-right:2rem; }
-  .contact-grid a:last-child{ padding-left:2rem; }
+  .contact-grid a:not(:last-child){ border-right:1px solid oklch(0.975 0.008 85 / 20%); padding-right:2rem; }
+  .contact-grid a:not(:first-child){ padding-left:2rem; }
 }
 .contact-grid .val{ font-family:var(--font-display); font-size:1.125rem; transition:transform .3s; }
 .contact-grid a:hover .val{ transform:translateX(-0.25rem); }
@@ -676,6 +676,10 @@ footer.site .label-caps{ color:oklch(0.975 0.008 85 / 45%); }
         <a href="https://www.linkedin.com/in/tania-mason-payertech" target="_blank" rel="noreferrer" data-reveal data-delay="90">
           <span class="label-caps text-accent">LinkedIn</span>
           <span class="val">/in/tania-mason-payertech</span>
+        </a>
+        <a href="https://github.com/framework-optimization-lab" target="_blank" rel="noreferrer" data-reveal data-delay="180">
+          <span class="label-caps text-accent">GitHub</span>
+          <span class="val">framework-optimization-lab</span>
         </a>
       </div>
     </div>
